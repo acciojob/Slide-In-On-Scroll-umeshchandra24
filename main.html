@@ -57,23 +57,22 @@
         if (callNow) func.apply(context, args);
       };
     }
-	function handleSlide(){
-		var images = document.querySelectorAll(".slide-in");
-		images.forEach(fuction(img)){
-			var distanceFromOriginImageInYDirection = window.scrollY + window.innerHeight - img.height/2;
-			var imageBottomDistanceFromOrign = image.offsetTop + img.height;
-			var imageFullyScrolled = distanceFromOriginImageInYDirection > imageBottomDistanceFromOrign;
-			var isImageHalfScroll = distanceFromOriginImageInYDirection > image.scrollTop;
-			if(isImageHalfScroll && imageFullyScrolled){
-				img.classList.add('active')
+	function addSlide(){
+		var scrolledImages = document.querySelctorAll(".slide-in");
+		scrolledImages.forEach((img)=>{
+			var scrollHeight = window.scrollY + window.innerHeight - img.height/2;
+			var imageBottomHeight = img.offsetTop + img.height;
+			var isImageHalfScrolled = scrollHeight > img.offsetTop;
+			var isImageFullyScrolled = window.scrollY > imageBottomHeight;
+			if(isImageHalfScrolled > isImageFullyScrolled){
+				img.classList.add('active');
 			}
 			else{
-				img.classList.removed('active');
+				img.classList.remove('active');
 			}
-			
-		}
+		} )
 	}
-	  widow.addEventListener("scroll", debounce(handleSlide));
+	  window.addEventListener('scroll', debounce(addSlide))
   </script>
 
   <style>
