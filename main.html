@@ -57,7 +57,23 @@
         if (callNow) func.apply(context, args);
       };
     }
-
+	function handleSlide(){
+		var images = document.querySelectorAll(".slide-in");
+		images.forEach(fuction(img)){
+			var distanceFromOriginImageInYDirection = window.scrollY + window.innerHeight - img.height/2;
+			var imageBottomDistanceFromOrign = image.offsetTop + img.height;
+			var imageFullyScrolled = distanceFromOriginImageInYDirection > imageBottomDistanceFromOrign;
+			var isImageHalfScroll = distanceFromOriginImageInYDirection > image.scrollTop;
+			if(isImageHalfScroll && imageFullyScrolled){
+				img.classList.add('active')
+			}
+			else{
+				img.classList.removed('active');
+			}
+			
+		}
+	}
+	  widow.addEventListener("scroll", debounce(handleSlide));
   </script>
 
   <style>
